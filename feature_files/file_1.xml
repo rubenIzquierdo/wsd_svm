@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<feature_functions>
+  <function name="extract_bow_lemmas">
+    <arg name="sentence_window">1</arg>
+  </function>
+</feature_functions>

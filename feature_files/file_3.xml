@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<feature_functions>
+  <function name="extract_bow_lemmas">
+    <arg name="sentence_window">1</arg>
+  </function>
+  <function name="extract_pos">
+    <arg name="window">3</arg>
+  </function>
+  <function name="extract_collocations">
+    <arg
+    name="collocations">C#-2#-2;C#-1#-1;C#1#1;C#2#2;C#-2#-1;C#-1#1;C#1#2;C#-3#-1;C#-2#1;C#-1#2;C#1#3;</arg>
+  </function>
+</feature_functions>
