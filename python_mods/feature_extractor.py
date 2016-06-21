@@ -48,6 +48,7 @@ def extract_pos(this_instance, options, features):
         
 
 def extract_collocations(this_instance, options, features):
+    #print('CALL TO EXTRACT COLLOCATIONS', this_instance.get_id(),file=sys.stderr)
     collocations = []
     string_collocations = options.get('collocations')
     list_collocations = string_collocations.split(';')
@@ -57,19 +58,22 @@ def extract_collocations(this_instance, options, features):
             collocations.append((int(tokens[1]), int(tokens[2])))
     
     index_of_target = this_instance.get_position_target_token()
+    #print('\tToken target',this_instance.get_token(index_of_target),file=sys.stderr)
     for relative_start, relative_end in collocations:
+        #print('\tStart: %d  End: %d' % (relative_start,relative_end),file=sys.stderr)
         abs_start = index_of_target + relative_start
         abs_end = index_of_target + relative_end
         tokens = []
         for this_idx in range(abs_start, abs_end+1):
             this_token = this_instance.get_token(this_idx)
-            if this_token is not None:                
+            if this_token is not None:      
                 tokens.append(this_token.text)
             else:
                 tokens = None
                 break
         if tokens is not None:
             feat = 'C#%d#%d#%s' % (relative_start,relative_end,'_'.join(tokens))
+            #print('\t\tValue', feat,file=sys.stderr)
             features.append(feat)
     
     
